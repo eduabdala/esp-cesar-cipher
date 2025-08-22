@@ -23,13 +23,19 @@ jobs:
         run: |
           git clone --branch release/v5.1 --depth 1 https://github.com/espressif/esp-idf.git $HOME/esp/esp-idf
           yes | $HOME/esp/esp-idf/install.sh
-          # Não use echo "source ..." >> $GITHUB_ENV
 
       - name: Build Firmware
         run: |
-          source $HOME/esp/esp-idf/export.sh
           chmod +x ./pipeline/build.sh
-          ./pipeline/build.sh
+          ./pipeline/build.sh ${{ github.ref_name }}
+
+      - name: Verify Build
+        run: |
+          ls -l ./releases
+          if [ ! -f "./releases/esp_cesar_cipher-${{ github.ref_name }}.bin" ]; then
+            echo "Erro: firmware não encontrado!"
+            exit 1
+          fi
 
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v4
@@ -47,6 +53,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Firmware to Release
+        if: success()
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}

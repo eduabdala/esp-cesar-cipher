@@ -2,7 +2,7 @@
 # build.sh - Build ESP32 Firmware e gera release
 # Eduardo Silva Abdala
 
-set -e  # Para sair caso algum comando falhe
+set -e  # Sai imediatamente se algum comando falhar
 
 # ------------------------
 # Configurações do projeto
@@ -11,14 +11,22 @@ PROJECT_DIR="$(pwd)"
 RELEASE_DIR="$PROJECT_DIR/releases"
 PROJECT_NAME="esp_cesar_cipher"
 
-# Lê a versão do arquivo version.txt, ou usa padrão v0.0.0
-if [ -f "$PROJECT_DIR/version.txt" ]; then
+# ------------------------
+# Versão do build
+# ------------------------
+# Se for passada como argumento, usa argumento, senão lê version.txt, senão usa padrão
+if [ -n "$1" ]; then
+    PROJECT_VER="$1"
+elif [ -f "$PROJECT_DIR/version.txt" ]; then
     PROJECT_VER=$(cat "$PROJECT_DIR/version.txt")
 else
     PROJECT_VER="v0.0.0"
 fi
 
 BIN_NAME="${PROJECT_NAME}-${PROJECT_VER}.bin"
+
+echo "Versão do build: $PROJECT_VER"
+echo "Nome do binário: $BIN_NAME"
 
 # ------------------------
 # Configuração ESP-IDF
