@@ -23,7 +23,7 @@ jobs:
         run: |
           git clone --branch release/v5.1 --depth 1 https://github.com/espressif/esp-idf.git $HOME/esp/esp-idf
           yes | $HOME/esp/esp-idf/install.sh
-          echo "source $HOME/esp/esp-idf/export.sh" >> $GITHUB_ENV
+          # Não use echo "source ..." >> $GITHUB_ENV
 
       - name: Build Firmware
         run: |
