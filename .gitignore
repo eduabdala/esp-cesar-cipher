@@ -1,1 +1,4 @@
 build/
+releases/
+/out/
+*.bin
