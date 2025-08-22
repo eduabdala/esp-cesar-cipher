@@ -56,7 +56,10 @@ jobs:
         if: success()
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./releases/esp_cesar_cipher-${{ github.ref_name }}.bin
-          asset_name: esp32-firmware-${{ github.ref_name }}.bin
-          asset_content_type: application/octet-stream
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            asset_path: ./releases/esp_cesar_cipher-${{ github.ref_name }}.bin
+            asset_name: esp32-firmware-${{ github.ref_name }}.bin
+            asset_content_type: application/octet-stream
+        env:
+            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
