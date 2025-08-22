@@ -1,6 +1,6 @@
 ![Build](https://github.com/eduabdala/tool-cesar-cipher/actions/workflows/build.yml/badge.svg)
 ![Project Status](https://img.shields.io/badge/status-in%20development-yellow)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/github/v/release/eduabdala/tool-cesar-cipher?color=blue&label=version)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Open Issues](https://img.shields.io/github/issues/eduabdala/tool-cesar-cipher)
 ![C++](https://img.shields.io/badge/C++-17.0-blue)
