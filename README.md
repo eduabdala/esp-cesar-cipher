@@ -14,7 +14,7 @@ Simple ESP32 firmware that encrypts messages using the **Caesar Cipher** algorit
 
 ## ⚙️ Technologies & Tools
 
-* **Languages:** C++17
+* **Languages:** C17
 * **Framework / SDK:** ESP-IDF
 * **Hardware:** ESP32
 * **Build Tools:** CMake, idf.py
